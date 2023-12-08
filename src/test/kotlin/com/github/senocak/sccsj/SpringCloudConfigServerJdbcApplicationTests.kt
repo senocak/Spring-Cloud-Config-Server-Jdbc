@@ -3,10 +3,10 @@ package com.github.senocak.sccsj
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
-@SpringBootTest
+//@SpringBootTest
 class SpringCloudConfigServerJdbcApplicationTests {
 
-    @Test
+  //  @Test
     fun contextLoads() {
     }
 

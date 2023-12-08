@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: postgres-sccsj
+    restart: always
+    environment:
+      POSTGRES_DB: sccsj
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: senocak
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./var/logs/postgresql:/var/log/postgresql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: "pg_isready -U postgres"
+    networks:
+      - ops
+volumes:
+  db-data:
+networks:
+  ops:

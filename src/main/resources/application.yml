@@ -1,0 +1,71 @@
+server:
+  port: ${SERVER_PORT:8081}
+  compression:
+    enabled: true
+spring:
+  profiles:
+    active: jdbc
+  cloud:
+    config:
+      label: master
+      enabled: true
+      server:
+        bootstrap: true
+        default-profile: production
+        jdbc:
+          order: 1
+          sql: SELECT pkey, pvalue from Property where application=? and profile=? and label=?
+          enabled: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:postgresql://${SERVER_IP:localhost}:${POSTGRESQL_PORT:5432}/${POSTGRESQL_DB:sccsj}?currentSchema=${POSTGRESQL_SCHEMA:public}
+    username: ${POSTGRESQL_USER:postgres}
+    password: ${POSTGRESQL_PASSWORD:senocak}
+  jpa:
+    properties:
+      hibernate:
+        envers:
+          audit_table_prefix: AU_
+          revision_field_name: REV_ID
+          revision_type_field_name: REV_TYPE
+          store_data_at_delete: true
+          default_schema: ${POSTGRESQL_SCHEMA:public}
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
+        highlight_sql: true
+        session:
+          events:
+            log:
+              LOG_QUERIES_SLOWER_THAN_MS: 1000
+    hibernate:
+      ddl-auto: update
+  application:
+    name: spring-cloud-config-server-jdbc
+ #sql:
+ #  init:
+ #    mode: always
+logging:
+  level:
+    net:
+      ttddyy:
+        dsproxy:
+          listener: debug
+    org:
+      hibernate:
+        SQL: info
+      springframework:
+        security: debug
+        web: error
+  file:
+    name: ./var/logs/app.log
+app:
+  jwtSecret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+  jwtExpirationInMs: '#{60 * 50 * 1000}' # 50 minutes in milliseconds
+  refreshExpirationInMs: '#{24 * 60 * 60 * 1000}' # 24 hours in milliseconds
+springdoc:
+  api-docs:
+    path: /api/v1/swagger
+    #version: @project.version@
