@@ -2,6 +2,7 @@ package com.github.senocak.sccsj
 
 import com.github.senocak.sccsj.domain.ExceptionDto
 import com.github.senocak.sccsj.domain.OmaErrorMessageType
+import com.github.senocak.sccsj.domain.ServerException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
 @RestControllerAdvice
-class RestExceptionHandler {
+class restExHandler {
     private val log: Logger = LoggerFactory.getLogger(this.javaClass)
 
     @ExceptionHandler(ServerException::class)

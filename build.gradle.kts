@@ -32,7 +32,8 @@ dependencies {
     implementation("org.springframework.data:spring-data-envers")
     implementation("org.hibernate:hibernate-envers:6.4.0.Final")
     implementation("com.github.gavlyukovskiy:datasource-proxy-spring-boot-starter:1.9.1")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:2.3.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 

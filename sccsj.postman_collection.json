@@ -1,0 +1,842 @@
+{
+	"info": {
+		"_postman_id": "6f6e7041-680e-4c51-b682-87477a721aaf",
+		"name": "sccsj",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7821151",
+		"_collection_link": "https://lively-comet-8198.postman.co/workspace/An%C4%B1l~d33d46fc-ebc0-4ccb-81ba-caceff009d2d/collection/7821151-6f6e7041-680e-4c51-b682-87477a721aaf?action=share&source=collection_link&creator=7821151"
+	},
+	"item": [
+		{
+			"name": "encrypt",
+			"item": [
+				{
+					"name": "status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sccsj/encrypt/status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"encrypt",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sccsj/key",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"key"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "key-name-profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sccsj/key/{{firstPropertyApplication}}/{{firstPropertyProfile}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"key",
+								"{{firstPropertyApplication}}",
+								"{{firstPropertyProfile}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"encrypted\", pm.response.text())"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{$randomWord}}.{{$randomWord}}"
+						},
+						"url": {
+							"raw": "{{url}}/sccsj/encrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"encrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{encrypted}}"
+						},
+						"url": {
+							"raw": "{{url}}/sccsj/decrypt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"decrypt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encrypt-name-profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"encrypted\", pm.response.text())"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{$randomWord}}.{{$randomWord}}"
+						},
+						"url": {
+							"raw": "{{url}}/sccsj/encrypt/{{firstPropertyApplication}}/{{firstPropertyProfile}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"encrypt",
+								"{{firstPropertyApplication}}",
+								"{{firstPropertyProfile}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decrypt-name-profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{encrypted}}"
+						},
+						"url": {
+							"raw": "{{url}}/sccsj/decrypt/{{firstPropertyApplication}}/{{firstPropertyProfile}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"decrypt",
+								"{{firstPropertyApplication}}",
+								"{{firstPropertyProfile}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "environment",
+			"item": [
+				{
+					"name": "defaultLabel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sccsj/{{firstPropertyApplication}}/{{firstPropertyProfile}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"{{firstPropertyApplication}}",
+								"{{firstPropertyProfile}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "defaultLabel v2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.spring-cloud.config-server.v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sccsj/{{firstPropertyApplication}}/{{firstPropertyProfile}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"{{firstPropertyApplication}}",
+								"{{firstPropertyProfile}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "labelled",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sccsj/{{firstPropertyApplication}}/{{firstPropertyProfile}}/{{firstPropertyLabel}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"{{firstPropertyApplication}}",
+								"{{firstPropertyProfile}}",
+								"{{firstPropertyLabel}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "labelled v2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.spring-cloud.config-server.v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sccsj/{{firstPropertyApplication}}/{{firstPropertyProfile}}/{{firstPropertyLabel}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"{{firstPropertyApplication}}",
+								"{{firstPropertyProfile}}",
+								"{{firstPropertyLabel}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "properties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sccsj/{{firstPropertyApplication}}-{{firstPropertyProfile}}.properties?resolvePlaceholders=true",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"{{firstPropertyApplication}}-{{firstPropertyProfile}}.properties"
+							],
+							"query": [
+								{
+									"key": "resolvePlaceholders",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "labelledProperties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sccsj/{{firstPropertyLabel}}/{{firstPropertyApplication}}-{{firstPropertyProfile}}.properties?resolvePlaceholders=true",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"{{firstPropertyLabel}}",
+								"{{firstPropertyApplication}}-{{firstPropertyProfile}}.properties"
+							],
+							"query": [
+								{
+									"key": "resolvePlaceholders",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "jsonProperties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sccsj/{{firstPropertyApplication}}-{{firstPropertyProfile}}.json?resolvePlaceholders=true",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"{{firstPropertyApplication}}-{{firstPropertyProfile}}.json"
+							],
+							"query": [
+								{
+									"key": "resolvePlaceholders",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "labelledJsonProperties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sccsj/{{firstPropertyLabel}}/{{firstPropertyApplication}}-{{firstPropertyProfile}}.json?resolvePlaceholders=true",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"{{firstPropertyLabel}}",
+								"{{firstPropertyApplication}}-{{firstPropertyProfile}}.json"
+							],
+							"query": [
+								{
+									"key": "resolvePlaceholders",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "yaml",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sccsj/{{firstPropertyApplication}}-{{firstPropertyProfile}}.yaml?resolvePlaceholders=false",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"{{firstPropertyApplication}}-{{firstPropertyProfile}}.yaml"
+							],
+							"query": [
+								{
+									"key": "resolvePlaceholders",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "labelledYaml",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sccsj/{{firstPropertyLabel}}/{{firstPropertyApplication}}-{{firstPropertyProfile}}.yml?resolvePlaceholders=true",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sccsj",
+								"{{firstPropertyLabel}}",
+								"{{firstPropertyApplication}}-{{firstPropertyProfile}}.yml"
+							],
+							"query": [
+								{
+									"key": "resolvePlaceholders",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "all",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/*",
+							"const   response    =   pm.response",
+							"        json        =   response.json()",
+							"pm.test(\"Status code is 200\", function () {",
+							"    response.to.have.status(200)",
+							"    pm.collectionVariables.set(\"firstPropertyId\", json[0].id)",
+							"    pm.collectionVariables.set(\"firstPropertyApplication\", json[0].application)",
+							"    pm.collectionVariables.set(\"firstPropertyProfile\", json[0].profile)",
+							"    pm.collectionVariables.set(\"firstPropertyLabel\", json[0].label)",
+							"    pm.collectionVariables.set(\"firstPropertyPKey\", json[0].pkey)",
+							"    pm.collectionVariables.set(\"firstPropertyPValue\", json[0].pvalue)",
+							"})",
+							"*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/env",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"env"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "sortBy",
+							"value": "profile",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "asc",
+							"disabled": true
+						},
+						{
+							"key": "q",
+							"value": "spring",
+							"disabled": true
+						},
+						{
+							"key": "revisions",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "revisionsPage",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "revisionsSize",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const   response    =   pm.response",
+							"        json        =   response.json()",
+							"pm.test(\"Status code is 201\", function () {",
+							"    response.to.have.status(201)",
+							"    pm.collectionVariables.set(\"firstPropertyId\", json.id)",
+							"    pm.collectionVariables.set(\"firstPropertyApplication\", json.application)",
+							"    pm.collectionVariables.set(\"firstPropertyProfile\", json.profile)",
+							"    pm.collectionVariables.set(\"firstPropertyLabel\", json.label)",
+							"    pm.collectionVariables.set(\"firstPropertyPKey\", json.pkey)",
+							"    pm.collectionVariables.set(\"firstPropertyPValue\", json.pvalue)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"application\": \"{{firstPropertyApplication}}\",\n    \"profile\": \"{{firstPropertyProfile}}\",\n    \"label\": \"{{firstPropertyLabel}}\",\n    \"pkey\": \"{{$randomWord}}.{{$randomWord}}\",\n    \"pvalue\": \"{{$randomWord}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/env",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"env"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const   response    =   pm.response",
+							"        json        =   response.json()",
+							"pm.test(\"Status code is 200\", function () {",
+							"    response.to.have.status(200)",
+							"    pm.collectionVariables.set(\"firstPropertyId\", json.id)",
+							"    pm.collectionVariables.set(\"firstPropertyApplication\", json.application)",
+							"    pm.collectionVariables.set(\"firstPropertyProfile\", json.profile)",
+							"    pm.collectionVariables.set(\"firstPropertyLabel\", json.label)",
+							"    pm.collectionVariables.set(\"firstPropertyPKey\", json.pkey)",
+							"    pm.collectionVariables.set(\"firstPropertyPValue\", json.pvalue)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"application\": \"{{firstPropertyApplication}}\",\n    \"profile\": \"{{firstPropertyProfile}}\",\n    \"label\": \"{{firstPropertyLabel}}\",\n    \"pkey\": \"{{$randomWord}}.{{$randomWord}}\",\n    \"pvalue\": \"{{$randomWord}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/env/{{firstPropertyId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"env",
+						"{{firstPropertyId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/env/{{firstPropertyId}}?revisions=true",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"env",
+						"{{firstPropertyId}}"
+					],
+					"query": [
+						{
+							"key": "revisions",
+							"value": "true"
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAppConfigByApplication",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/env/application/{{firstPropertyApplication}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"env",
+						"application",
+						"{{firstPropertyApplication}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAppConfigByApplicationAndModule",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/env/application/{{firstPropertyApplication}}/profile/{{firstPropertyProfile}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"env",
+						"application",
+						"{{firstPropertyApplication}}",
+						"profile",
+						"{{firstPropertyProfile}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByApplicationAndProfileAndLabel",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/env/application/{{firstPropertyApplication}}/profile/{{firstPropertyProfile}}/label/{{firstPropertyLabel}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"env",
+						"application",
+						"{{firstPropertyApplication}}",
+						"profile",
+						"{{firstPropertyProfile}}",
+						"label",
+						"{{firstPropertyLabel}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByApplicationAndProfileAndLabelAndPkey",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/env/application/{{firstPropertyApplication}}/profile/{{firstPropertyProfile}}/label/{{firstPropertyLabel}}/key/{{firstPropertyPKey}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"env",
+						"application",
+						"{{firstPropertyApplication}}",
+						"profile",
+						"{{firstPropertyProfile}}",
+						"label",
+						"{{firstPropertyLabel}}",
+						"key",
+						"{{firstPropertyPKey}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "firstProperty",
+			"value": ""
+		},
+		{
+			"key": "firstPropertyId",
+			"value": ""
+		},
+		{
+			"key": "firstPropertyApplication",
+			"value": ""
+		},
+		{
+			"key": "firstPropertyProfile",
+			"value": ""
+		},
+		{
+			"key": "firstPropertyLabel",
+			"value": ""
+		},
+		{
+			"key": "firstPropertyPKey",
+			"value": ""
+		},
+		{
+			"key": "firstPropertyPValue",
+			"value": ""
+		},
+		{
+			"key": "encrypted",
+			"value": ""
+		}
+	]
+}

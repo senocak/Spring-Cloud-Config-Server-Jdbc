@@ -1,6 +1,5 @@
-package com.github.senocak.sccsj
+package com.github.senocak.sccsj.domain
 
-import com.github.senocak.sccsj.domain.OmaErrorMessageType
 import org.springframework.http.HttpStatus
 
 

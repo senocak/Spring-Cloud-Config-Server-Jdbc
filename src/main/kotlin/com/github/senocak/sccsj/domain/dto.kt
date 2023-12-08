@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.annotation.JsonTypeName
-import com.github.senocak.sccsj.ServerException
 import io.swagger.v3.oas.annotations.media.ArraySchema
 import io.swagger.v3.oas.annotations.media.Schema
-import java.time.Instant
-import java.util.Date
 import java.util.UUID
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -34,7 +31,7 @@ data class PropertyDTO(
     val createdAt: Long,
     val updatedAt: Long
 ): BaseDto() {
-    var revisions: List<RevisionDTO>? = null
+    var revisions: RevisionPaginationDTO? = null
 }
 
 data class RevisionDTO(
@@ -42,6 +39,11 @@ data class RevisionDTO(
     val revisionInstant: Long,
     val data: PropertyDTO
 ): BaseDto()
+
+class RevisionPaginationDTO(
+    pageModel: Page<Revision<Long, Property>>,
+    items: List<RevisionDTO>,
+): PaginationResponse<Revision<Long, Property>, RevisionDTO>(page = pageModel, items = items)
 
 class PropertyPaginationDTO(
     pageModel: Page<Property>,
@@ -55,13 +57,12 @@ object PageRequestBuilder {
     private val log: Logger = LoggerFactory.getLogger(this.javaClass)
 
     fun build(paginationCriteria: PaginationCriteria): PageRequest {
-        if (paginationCriteria.page < 1) {
-            "Page must be greater than 0!"
+        if (paginationCriteria.page < 0) {
+            "Page must be greater than or equal to 0!"
                 .also { log.warn(it) }
                 .run { throw ServerException(omaErrorMessageType = OmaErrorMessageType.BASIC_INVALID_INPUT,
                     variables = arrayOf(this), statusCode = HttpStatus.BAD_REQUEST) }
         }
-        paginationCriteria.page -= 1
         if (paginationCriteria.size < 1) {
             "Size must be greater than 0!"
                 .also { log.warn(it) }
@@ -93,8 +94,8 @@ open class PaginationResponse<T, P>(
     @Schema(example = "asc", description = "Sort", required = true, name = "sort", type = "String")
     var sort: String? = null
 ) : BaseDto() {
-    @Schema(example = "1", description = "Current page", required = true, name = "page", type = "String")
-    var page: Int = page.number + 1
+    @Schema(example = "0", description = "Current page", required = true, name = "page", type = "String")
+    var page: Int = page.number
 
     @Schema(example = "3", description = "Total pages", required = true, name = "pages", type = "String")
     var pages: Int = page.totalPages
@@ -111,7 +112,7 @@ open class PaginationResponse<T, P>(
 data class PaginationCriteria(
     var page: Int,
     var size: Int
-){
+): BaseDto() {
     var sortBy: String? = null
     var sort: String? = null
     var columns: ArrayList<String> = arrayListOf()
