@@ -9,12 +9,12 @@
 
 ### Screenshots
 
-<img src="all.png" width="50%" />
-<img src="create.png" width="50%" />
-<img src="update.png" width="50%" />
-<img src="show.png" width="50%" />
-<img src="profile.png" width="50%" />
-<img src="yml.png" width="50%" />
-<img src="json.png" width="50%" />
-<img src="properties.png" width="50%" />
+<img src="all.png"/>
+<img src="create.png"/>
+<img src="update.png"/>
+<img src="show.png"/>
+<img src="profile.png"/>
+<img src="yml.png"/>
+<img src="json.png"/>
+<img src="properties.png"/>
 
