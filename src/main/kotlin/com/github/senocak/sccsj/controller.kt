@@ -94,7 +94,7 @@ class IndexController(
                     }
                     .run paginationCriteria@ {
                         appConfigRepository.findAll(
-                            createSpecificationForUser(q = q),
+                            createSpecification(q = q),
                             PageRequestBuilder.build(paginationCriteria = this@paginationCriteria)
                         )
                     }
@@ -302,7 +302,7 @@ class IndexController(
             .run { appConfigRepository.delete(this) }
             .run { ResponseEntity.noContent().build() }
 
-    private fun createSpecificationForUser(q: String?): Specification<Property> {
+    private fun createSpecification(q: String?): Specification<Property> {
         return Specification { root: Root<Property>, query: CriteriaQuery<*>, criteriaBuilder: CriteriaBuilder ->
             val predicates: MutableList<Predicate> = ArrayList()
             if (!q.isNullOrEmpty()) {
