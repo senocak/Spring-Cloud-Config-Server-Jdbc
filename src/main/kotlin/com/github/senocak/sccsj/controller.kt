@@ -25,9 +25,11 @@ import jakarta.persistence.criteria.Predicate
 import jakarta.persistence.criteria.Root
 import jakarta.validation.constraints.Pattern
 import java.util.UUID
+import java.util.concurrent.atomic.AtomicBoolean
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.cloud.config.server.environment.EnvironmentRepository
+import org.springframework.context.SmartLifecycle
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.history.Revision
@@ -49,10 +51,10 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("env")
 @RestController
 @Tag(name = "index", description = "Index Controller")
-class indexController(
+class IndexController(
     private val appConfigRepository: AppConfigRepository,
     private val environmentRepository: EnvironmentRepository
-){
+): SmartLifecycle{
     private val log: Logger = LoggerFactory.getLogger(this.javaClass)
 
     @GetMapping
@@ -321,4 +323,8 @@ class indexController(
                 ServerException(omaErrorMessageType = OmaErrorMessageType.NOT_FOUND, variables = arrayOf(), statusCode = HttpStatus.NOT_FOUND)
             }
 
+    private val running = AtomicBoolean(false)
+    override fun start(): Unit = running.compareAndSet(false, true).run { log.info("start") }
+    override fun stop(): Unit = running.compareAndSet(true, false).run { log.info("stop") }
+    override fun isRunning(): Boolean = running.get().also { log.info("is runnign") }
 }
