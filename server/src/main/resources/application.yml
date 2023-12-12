@@ -1,7 +1,5 @@
 server:
   port: ${SERVER_PORT:8080}
-  compression:
-    enabled: true
 spring:
   profiles:
     active: jdbc
@@ -76,3 +74,8 @@ encrypt:
     alias: config-server-key
     #secret: my-k34-s3cr3t
     #To generate .jks key visit: https://www.baeldung.com/spring-cloud-configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

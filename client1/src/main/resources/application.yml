@@ -1,0 +1,17 @@
+server:
+  port: ${CLIENT1_PORT:8081}
+spring:
+  application:
+    name: client1
+  profiles:
+    active: dev
+  config:
+    import: configserver:http://localhost:8080/sccsj
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+# hale.parlayan@gmail.com

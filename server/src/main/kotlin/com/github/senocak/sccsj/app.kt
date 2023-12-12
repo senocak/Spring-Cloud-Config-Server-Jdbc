@@ -48,7 +48,7 @@ class SpringCloudConfigServerJdbcApplication(
                         listOf(
                             Property()
                                 .also { it: Property ->
-                                    it.application = "app-client"
+                                    it.application = "client1"
                                     it.profile = "dev"
                                     it.label = "master"
                                     it.pkey = "spring.h2.console.enabled"
@@ -56,7 +56,7 @@ class SpringCloudConfigServerJdbcApplication(
                                 },
                             Property()
                                 .also { it: Property ->
-                                    it.application = "app-client"
+                                    it.application = "client1"
                                     it.profile = "dev"
                                     it.label = "master"
                                     it.pkey = "spring.datasource.url"
@@ -64,7 +64,7 @@ class SpringCloudConfigServerJdbcApplication(
                                 },
                             Property()
                                 .also { it: Property ->
-                                    it.application = "app-client"
+                                    it.application = "client1"
                                     it.profile = "dev"
                                     it.label = "master"
                                     it.pkey = "spring.datasource.username"
@@ -72,7 +72,7 @@ class SpringCloudConfigServerJdbcApplication(
                                 },
                             Property()
                                 .also { it: Property ->
-                                    it.application = "app-client"
+                                    it.application = "client1"
                                     it.profile = "dev"
                                     it.label = "master"
                                     it.pkey = "spring.datasource.password"
@@ -81,7 +81,15 @@ class SpringCloudConfigServerJdbcApplication(
                                 },
                             Property()
                                 .also { it: Property ->
-                                    it.application = "app-client"
+                                    it.application = "client2"
+                                    it.profile = "test"
+                                    it.label = "master"
+                                    it.pkey = "threadpool.min.size"
+                                    it.pvalue = "10"
+                                },
+                            Property()
+                                .also { it: Property ->
+                                    it.application = "client2"
                                     it.profile = "dev"
                                     it.label = "master"
                                     it.pkey = "threadpool.min.size"
@@ -89,15 +97,7 @@ class SpringCloudConfigServerJdbcApplication(
                                 },
                             Property()
                                 .also { it: Property ->
-                                    it.application = "app-client"
-                                    it.profile = "dev"
-                                    it.label = "master"
-                                    it.pkey = "threadpool.min.size"
-                                    it.pvalue = "10"
-                                },
-                            Property()
-                                .also { it: Property ->
-                                    it.application = "app-client"
+                                    it.application = "client2"
                                     it.profile = "dev"
                                     it.label = "test"
                                     it.pkey = "threadpool.min.size"
@@ -105,7 +105,7 @@ class SpringCloudConfigServerJdbcApplication(
                                 },
                             Property()
                                 .also { it: Property ->
-                                    it.application = "app-client"
+                                    it.application = "client2"
                                     it.profile = "dev"
                                     it.label = "master"
                                     it.pkey = "threadpool.size"
@@ -113,7 +113,7 @@ class SpringCloudConfigServerJdbcApplication(
                                 },
                             Property()
                                 .also { it: Property ->
-                                    it.application = "app-client"
+                                    it.application = "client2"
                                     it.profile = "dev"
                                     it.label = "master"
                                     it.pkey = "app.scheduler.timeout"
@@ -121,14 +121,6 @@ class SpringCloudConfigServerJdbcApplication(
                                 }
                         )
                     )
-                        .run {
-                            appConfigRepository.save(
-                                appConfigRepository.findAll().first()
-                                    .also { it: Property ->
-                                        it.profile = "test"
-                                    }
-                            )
-                        }
                 }
             }
 }

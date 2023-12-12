@@ -9,12 +9,24 @@
 
 ### Screenshots
 
-<img src="all.png"/>
-<img src="create.png"/>
-<img src="update.png"/>
-<img src="show.png"/>
-<img src="profile.png"/>
-<img src="yml.png"/>
-<img src="json.png"/>
-<img src="properties.png"/>
+<img src="all.png" alt="all.png"/>
+<img src="create.png" alt="create.png"/>
+<img src="update.png" alt="update.png"/>
+<img src="show.png" alt="show.png"/>
+<img src="profile.png" alt="profile.png"/>
+<img src="yml.png" alt="yml.png"/>
+<img src="json.png" alt="json.png"/>
+<img src="properties.png" alt="properties.png"/>
 
+
+# Client
+1. Run client application under ``client`` folder
+2. Update any value for
+   1. application: `client`
+   2. profile: `dev`
+3. Run the actuator refresh api to refresh the context in client app
+   1. `curl -H "Content-Type: application/json" -d {} http://localhost:8081/actuator/refresh`
+4. Check the logs in client application
+5. Verify environment variable is changed
+
+<img src="client-refresh.png" alt="client-refresh.png"/>
